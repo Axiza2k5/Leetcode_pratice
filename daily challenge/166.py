@@ -36,6 +36,17 @@ class Solution:
         return str(numerator//denominator)
     
     def fractionToDecimal(self, numerator: int, denominator: int) -> str:
+        nev = ''
+        if numerator < 0 and denominator < 0:
+            numerator *= -1
+            denominator *= -1
+        elif numerator < 0:
+            numerator *= -1
+            nev = '-'
+        elif denominator < 0 and numerator != 0:
+            denominator *= -1
+            nev = '-'
+
         return self.getInteger(numerator, denominator) + self.getDecimal((numerator%denominator)*10, denominator)
     
-print(Solution().fractionToDecimal(1, 6))
+print(Solution().fractionToDecimal(-1, 1))
