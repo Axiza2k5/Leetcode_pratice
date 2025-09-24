@@ -1,7 +1,7 @@
 class Solution:
     def __init__(self):
         self.memo = []
-        self.memo_index = []
+        self.memo_index = {}
         self.numer = 0
 
     def getDecimal(self, numerator: int, denominator: int) -> str:
@@ -36,7 +36,6 @@ class Solution:
         return str(numerator//denominator)
     
     def fractionToDecimal(self, numerator: int, denominator: int) -> str:
-        self.memo_index = [0]* denominator
         return self.getInteger(numerator, denominator) + self.getDecimal((numerator%denominator)*10, denominator)
     
 print(Solution().fractionToDecimal(1, 6))
