@@ -1,35 +1,42 @@
 class Solution:
     def __init__(self):
         self.memo = []
-    
+        self.memo_index = []
+        self.numer = 0
+
     def getDecimal(self, numerator: int, denominator: int) -> str:
         if numerator == 0:
             return ""
-        dec = self._getDecimal(numerator, denominator)
+        dec = self._getDecimal(numerator, denominator, 1)
         if ')' in dec:
-            dec = '(' + dec
+            dec = dec[:self.memo_index[self.numer]] + '(' + dec[self.memo_index[self.numer]:]
         if dec != "":
             return "." + dec
         return dec
         
-    def _getDecimal(self, numerator: int, denominator: int) -> str:
-        self.memo.append(numerator)
+    def _getDecimal(self, numerator: int, denominator: int, i: int) -> str:
+
         dec = str(numerator//denominator)
         numerator %= denominator
-        numerator *= 10
 
         if numerator == 0:
             return dec
         if numerator in self.memo:
+            self.numer = numerator
             return dec + ')'
         
-        return dec + self._getDecimal(numerator, denominator)
+        self.memo.append(numerator)
+        self.memo_index[numerator] = i
+        numerator *= 10
+        
+        return dec + self._getDecimal(numerator, denominator, i+1)
 
         
     def getInteger(self, numerator: int, denominator: int) -> str:
         return str(numerator//denominator)
     
     def fractionToDecimal(self, numerator: int, denominator: int) -> str:
+        self.memo_index = [0]* denominator
         return self.getInteger(numerator, denominator) + self.getDecimal((numerator%denominator)*10, denominator)
     
-print(Solution().fractionToDecimal(666, 333))
+print(Solution().fractionToDecimal(1, 6))
