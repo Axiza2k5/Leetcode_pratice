@@ -47,6 +47,4 @@ class Solution:
             denominator *= -1
             nev = '-'
 
-        return self.getInteger(numerator, denominator) + self.getDecimal((numerator%denominator)*10, denominator)
-    
-print(Solution().fractionToDecimal(-1, 1))
+        return nev + self.getInteger(numerator, denominator) + self.getDecimal((numerator%denominator)*10, denominator)
