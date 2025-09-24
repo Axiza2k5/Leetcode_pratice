@@ -1,17 +1,4 @@
 class Solution:
-    def binary_search(self, nums, target):
-        left = 0
-        right = len(nums)
-        while (left<right):
-            mid = (left + right)//2
-            if nums[mid] == target:
-                return mid
-            if nums[mid] < target:
-                left = mid+1
-            if nums[mid] > target:
-                right = mid-1
-        return -1
-        
     def twoSum(self, nums, target: int):
         seen = {}
         for i, n in enumerate(nums):
