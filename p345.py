@@ -27,6 +27,4 @@ class Solution:
                 strings.append(s[last:i])
                 last = i+1
         strings.append(s[last:])
-        print(vowels)
-        print(strings)
-        print(self.mergeAlternately(strings, vowels[::-1]))
+        return self.mergeAlternately(strings, vowels[::-1])
