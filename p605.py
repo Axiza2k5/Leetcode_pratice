@@ -8,7 +8,7 @@ class Solution:
                 i += 2
                 continue
 
-            if i == ln-1 and flowerbed[i]:
+            if i == ln-1 and flowerbed[i] == 0:
                 count += 1 
                 break
 
