@@ -33,8 +33,8 @@ class Solution:
 
 
     def triangleNumber(self, nums) -> int:
-        nums = self.mergeSort(nums)
-        # nums.sort()
+        # nums = self.mergeSort(nums)
+        nums.sort()
         count = 0
         for k in range(len(nums)-1,1,-1):
             i = 0
